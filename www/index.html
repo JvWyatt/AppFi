@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="description" content="AppFi - Finanzas Minimalistas">
+    
+    <title>AppFi - Finanzas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay hidden"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>Cuentas</h2>
+            <button id="cerrarMenu">✕</button>
+        </div>
+
+        <div id="listaCuentas"></div>
+
+        <button id="nuevaCuentaBtn" class="menu-btn">+ Nueva cuenta</button>
+        <button id="renombrarCuentaBtn" class="menu-btn">✏ Renombrar</button>
+        <button id="eliminarCuentaBtn" class="menu-btn danger">🗑 Eliminar</button>
+    </aside>
+
+    <!-- Header -->
+    <header>
+        <button id="abrirMenu">☰</button>
+        <h1>AppFi</h1>
+    </header>
+
+    <!-- Cuenta actual -->
+    <section class="cuenta-selector">
+        <span id="cuentaActual">Sin cuenta</span>
+    </section>
+
+    <!-- Resumen -->
+    <section class="resumen">
+        <div class="card-resumen">
+            <span>Balance actual</span>
+            <strong id="balanceActual">$0.00</strong>
+        </div>
+
+        <div class="card-resumen">
+            <span>Pendiente</span>
+            <strong id="pendienteReponer">$0.00</strong>
+        </div>
+
+        <div class="card-resumen">
+            <span>Objetivo</span>
+            <strong id="balanceObjetivo">$0.00</strong>
+        </div>
+    </section>
+
+    <!-- Acciones rápidas -->
+    <section class="acciones">
+        <button class="accion ingreso" data-tipo="Ingreso">Ingreso</button>
+        <button class="accion gasto" data-tipo="Gasto">Gasto</button>
+        <button class="accion reposicion" data-tipo="Reposición del Retiro">Reposición</button>
+        <button class="accion retiro" data-tipo="Retiro Temporal">Retiro</button>
+    </section>
+
+    <!-- Movimientos -->
+    <section class="movimientos">
+        <h2>Movimientos</h2>
+        <div id="listaMovimientos"></div>
+    </section>
+
+    <!-- Modal movimiento -->
+    <div id="modalMovimiento" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="tituloModal">Movimiento</h2>
+
+            <input type="number" id="montoMovimiento" placeholder="Monto" inputmode="decimal">
+            <input type="text" id="descripcionMovimiento" placeholder="Descripción (opcional)">
+            <input type="date" id="fechaMovimiento">
+
+            <div class="modal-buttons">
+                <button id="cancelarMovimiento">Cancelar</button>
+                <button id="guardarMovimiento">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal cuenta -->
+    <div id="modalCuenta" class="modal hidden">
+        <div class="modal-content">
+            <h2>Nueva cuenta</h2>
+            <input type="text" id="nombreCuenta" placeholder="Nombre de la cuenta">
+
+            <div class="modal-buttons">
+                <button id="cancelarCuenta">Cancelar</button>
+                <button id="guardarCuenta">Crear</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(() => console.log('Service Worker registrado'))
+                .catch(err => console.warn('Service Worker falló', err));
+        }
+    </script>
+</body>
+
+</html>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js">
+    </script>
+
+</body>
+
+</html>

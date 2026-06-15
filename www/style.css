@@ -1,0 +1,537 @@
+:root {
+    --primary: #2563eb;
+    --income: #16a34a;
+    --expense: #dc2626;
+    --temporary: #f87171;
+    --replace: #86efac;
+
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --secondary-text: #64748b;
+
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    background: var(--surface);
+    padding: 12px 16px;
+    box-shadow: var(--shadow);
+    z-index: 100;
+}
+
+header button {
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+header button:active {
+    background: var(--background);
+}
+
+header h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    flex: 1;
+}
+
+/* CUENTA ACTUAL */
+
+.cuenta-selector {
+    padding: 16px;
+    margin-bottom: 8px;
+}
+
+#cuentaActual {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* RESUMEN */
+
+.resumen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+}
+
+.card-resumen {
+    background: var(--surface);
+    padding: 14px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--primary);
+}
+
+.card-resumen:nth-child(2) {
+    border-left-color: var(--temporary);
+}
+
+.card-resumen:nth-child(3) {
+    border-left-color: var(--income);
+}
+
+.card-resumen span {
+    color: var(--secondary-text);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-resumen strong {
+    display: block;
+    margin-top: 6px;
+    font-size: 1.4rem;
+}
+
+/* ACCIONES */
+
+.acciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+}
+
+.accion {
+    border: none;
+    border-radius: var(--radius);
+    padding: 16px 12px;
+    color: white;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.accion span {
+    display: none;
+}
+
+.accion:active {
+    transform: scale(0.95);
+    box-shadow: var(--shadow);
+}
+
+.ingreso {
+    background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    color: white;
+}
+
+.gasto {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+}
+
+.retiro {
+    background: transparent;
+    border: 2px solid #ef4444;
+    color: #ef4444;
+}
+
+.reposicion {
+    background: transparent;
+    border: 2px solid #4ade80;
+    color: #4ade80;
+}
+
+/* MOVIMIENTOS */
+
+.movimientos {
+    padding: 16px;
+}
+
+.movimientos h2 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+#listaMovimientos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* TARJETA MOVIMIENTO */
+
+.movimiento-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 14px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    border-left: 4px solid var(--primary);
+    transition: all 0.2s;
+}
+
+.movimiento-card:active {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.mov-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+}
+
+.mov-fecha {
+    color: var(--secondary-text);
+    font-size: 0.75rem;
+}
+
+.mov-tipo {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.mov-desc {
+    color: var(--secondary-text);
+    font-size: 0.85rem;
+    margin-top: 2px;
+}
+
+.mov-monto {
+    font-size: 1.1rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.mov-monto.ingreso {
+    color: var(--income);
+}
+
+.mov-monto.gasto {
+    color: var(--expense);
+}
+
+.mov-monto.retiro {
+    color: var(--temporary);
+}
+
+.mov-monto.reposicion {
+    color: var(--replace);
+}
+
+.mov-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mov-actions button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 6px;
+    transition: all 0.2s;
+}
+
+.mov-actions button:active {
+    transform: scale(1.2);
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 280px;
+    height: 100%;
+    background: var(--surface);
+    box-shadow: var(--shadow-lg);
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--background);
+}
+
+.sidebar-header h2 {
+    font-size: 1.1rem;
+}
+
+.sidebar-header button {
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.sidebar-header button:active {
+    background: var(--background);
+}
+
+#listaCuentas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cuenta-item {
+    background: var(--background);
+    border-radius: 10px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.cuenta-item:active {
+    transform: translateX(4px);
+}
+
+.cuenta-item.active {
+    background: var(--primary);
+    color: white;
+}
+
+.menu-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.menu-btn:active {
+    transform: scale(0.98);
+}
+
+.menu-btn.danger {
+    background: var(--expense);
+}
+
+/* OVERLAY */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+    backdrop-filter: blur(2px);
+    animation: fadeIn 0.2s;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1100;
+    padding: 16px;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.modal-content input {
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.modal-content input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.modal-buttons button:active {
+    transform: scale(0.98);
+}
+
+#guardarMovimiento,
+#guardarCuenta {
+    background: var(--primary);
+    color: white;
+}
+
+#cancelarMovimiento,
+#cancelarCuenta {
+    background: #f1f5f9;
+    color: var(--text);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 480px) {
+    html {
+        font-size: 15px;
+    }
+
+    .resumen {
+        grid-template-columns: 1fr;
+    }
+
+    .accion span {
+        display: none;
+    }
+
+    .accion {
+        padding: 14px;
+    }
+
+    .modal {
+        align-items: center;
+    }
+
+    .modal-content {
+        border-radius: 16px;
+    }
+}
+
+@media (min-width: 768px) {
+    .resumen {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .acciones {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    body {
+        padding-bottom: 40px;
+    }
+}

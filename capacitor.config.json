@@ -1,0 +1,6 @@
+{
+  "appId": "com.jvwyatt.appfi",
+  "appName": "AppFi",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}
