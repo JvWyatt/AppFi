@@ -114,6 +114,36 @@ function guardarDatos() {
     );
 }
 
+function obtenerDescripcionesGuardadas() {
+    const descripciones = new Set();
+
+    Object.values(cuentas).forEach(movimientos => {
+        movimientos.forEach(mov => {
+            const texto = mov.descripcion?.trim();
+            if (texto) {
+                descripciones.add(texto);
+            }
+        });
+    });
+
+    return [...descripciones];
+}
+
+function actualizarDatalistDescripciones() {
+    const datalist = document.getElementById("descripcionesGuardadas");
+    if (!datalist) {
+        return;
+    }
+
+    datalist.innerHTML = "";
+
+    obtenerDescripcionesGuardadas().forEach(descripcion => {
+        const option = document.createElement("option");
+        option.value = descripcion;
+        datalist.appendChild(option);
+    });
+}
+
 
 // ===============================
 // CARGAR DATOS INICIALES
@@ -859,6 +889,7 @@ function renderizarCuenta() {
     cuentaActualTexto.textContent =
         cuentaActual;
 
+    actualizarDatalistDescripciones();
 
     // ===============================
     // RESUMEN
@@ -1029,7 +1060,6 @@ function renderizarCuenta() {
 
                             <div class="mov-tipo">
 
-                                ${emoji}
                                 ${mov.tipo}
 
                             </div>
