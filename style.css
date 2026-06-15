@@ -1,7 +1,9 @@
 :root {
     --primary: #2563eb;
     --income: #16a34a;
+    --income-muted: rgba(22, 163, 74, 0.85);
     --expense: #dc2626;
+    --expense-muted: rgba(220, 38, 38, 0.85);
     --temporary: #f87171;
     --replace: #86efac;
 
@@ -257,19 +259,19 @@ header h1 {
 }
 
 .mov-monto.ingreso {
-    color: var(--income);
+    color: var(--income-muted);
 }
 
 .mov-monto.gasto {
-    color: var(--expense);
+    color: var(--expense-muted);
 }
 
 .mov-monto.retiro {
-    color: var(--temporary);
+    color: var(--expense-muted);
 }
 
 .mov-monto.reposicion {
-    color: var(--replace);
+    color: var(--income-muted);
 }
 
 .mov-actions {
@@ -345,12 +347,18 @@ header h1 {
 }
 
 .cuenta-item {
-    background: var(--background);
+    background: transparent;
+    border: 2px solid var(--income);
     border-radius: 10px;
     padding: 12px;
     cursor: pointer;
     transition: all 0.2s;
     font-weight: 500;
+    color: var(--text);
+}
+
+.cuenta-item:hover {
+    background: rgba(22, 163, 74, 0.08);
 }
 
 .cuenta-item:active {
@@ -358,21 +366,26 @@ header h1 {
 }
 
 .cuenta-item.active {
-    background: var(--primary);
-    color: white;
+    background: rgba(22, 163, 74, 0.14);
+    color: var(--income);
+    border-color: var(--income);
 }
 
 .menu-btn {
     width: 100%;
     margin-top: 10px;
     padding: 12px;
-    border: none;
+    border: 2px solid var(--primary);
     border-radius: 10px;
-    background: var(--primary);
-    color: white;
+    background: transparent;
+    color: var(--primary);
     cursor: pointer;
     font-weight: 600;
     transition: all 0.2s;
+}
+
+.menu-btn:hover {
+    background: rgba(37, 99, 235, 0.08);
 }
 
 .menu-btn:active {
@@ -380,7 +393,8 @@ header h1 {
 }
 
 .menu-btn.danger {
-    background: var(--expense);
+    border-color: var(--expense);
+    color: var(--expense);
 }
 
 /* OVERLAY */
