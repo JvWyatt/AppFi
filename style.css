@@ -1,0 +1,411 @@
+:root {
+    --primary: #2563eb;
+    --income: #16a34a;
+    --expense: #dc2626;
+    --temporary: #0284c7;
+    --replace: #9333ea;
+
+    --background: #f5f5f5;
+    --surface: #ffffff;
+    --text: #111827;
+    --secondary-text: #6b7280;
+
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    --radius: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, sans-serif;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 40px;
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    background: var(--surface);
+
+    padding: 16px;
+
+    box-shadow: var(--shadow);
+
+    z-index: 100;
+}
+
+header button {
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+header h1 {
+    font-size: 1.4rem;
+}
+
+/* CUENTA ACTUAL */
+
+.cuenta-selector {
+    padding: 20px 16px 8px;
+}
+
+#cuentaActual {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* RESUMEN */
+
+.resumen {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 0 16px;
+}
+
+.card-resumen {
+    background: var(--surface);
+
+    padding: 18px;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+.card-resumen span {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+.card-resumen strong {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 1.8rem;
+}
+
+/* ACCIONES */
+
+.acciones {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    padding: 20px 16px;
+}
+
+.accion {
+    border: none;
+
+    border-radius: var(--radius);
+
+    padding: 20px 10px;
+
+    color: white;
+
+    cursor: pointer;
+
+    box-shadow: var(--shadow);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 1.4rem;
+}
+
+.accion span {
+    font-size: 0.95rem;
+}
+
+.ingreso {
+    background: var(--income);
+}
+
+.gasto {
+    background: var(--expense);
+}
+
+.retiro {
+    background: var(--temporary);
+}
+
+.reposicion {
+    background: var(--replace);
+}
+
+/* MOVIMIENTOS */
+
+.movimientos {
+    padding: 0 16px;
+}
+
+.movimientos h2 {
+    margin-bottom: 16px;
+}
+
+#listaMovimientos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* TARJETA MOVIMIENTO */
+
+.movimiento-card {
+    background: var(--surface);
+
+    border-radius: var(--radius);
+
+    padding: 16px;
+
+    box-shadow: var(--shadow);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.mov-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mov-fecha {
+    color: var(--secondary-text);
+    font-size: 0.85rem;
+}
+
+.mov-tipo {
+    font-weight: 600;
+}
+
+.mov-desc {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+.mov-monto {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.mov-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mov-actions button {
+    border: none;
+
+    background: none;
+
+    cursor: pointer;
+
+    font-size: 1.2rem;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    left: -280px;
+
+    width: 280px;
+
+    height: 100%;
+
+    background: var(--surface);
+
+    box-shadow: var(--shadow);
+
+    transition: left 0.3s ease;
+
+    z-index: 1000;
+
+    padding: 20px;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.sidebar-header button {
+    border: none;
+    background: none;
+    font-size: 24px;
+}
+
+#listaCuentas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cuenta-item {
+    background: var(--background);
+
+    border-radius: 12px;
+
+    padding: 14px;
+
+    cursor: pointer;
+}
+
+.cuenta-item.active {
+    background: var(--primary);
+    color: white;
+}
+
+.menu-btn {
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: var(--primary);
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.menu-btn.danger {
+    background: var(--expense);
+}
+
+/* OVERLAY */
+
+.overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.4);
+
+    z-index: 900;
+}
+
+.hidden {
+    display: none;
+}
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 1100;
+}
+
+.modal-content {
+    width: 90%;
+
+    max-width: 400px;
+
+    background: white;
+
+    border-radius: var(--radius);
+
+    padding: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+.modal-content input {
+    padding: 14px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 12px;
+}
+
+.modal-buttons {
+    display: flex;
+
+    gap: 12px;
+}
+
+.modal-buttons button {
+    flex: 1;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+}
+
+#guardarMovimiento,
+#guardarCuenta {
+    background: var(--primary);
+
+    color: white;
+}
+
+#cancelarMovimiento,
+#cancelarCuenta {
+    background: #e5e7eb;
+}
