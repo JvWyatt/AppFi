@@ -163,18 +163,24 @@ header h1 {
 
 .ingreso {
     background: linear-gradient(135deg, #86efac 0%, #4ade80 100%);
+    color: white;
 }
 
 .gasto {
     background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%);
+    color: white;
 }
 
 .retiro {
-    background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%);
+    background: transparent;
+    border: 2px solid #f87171;
+    color: #f87171;
 }
 
 .reposicion {
-    background: linear-gradient(135deg, #86efac 0%, #4ade80 100%);
+    background: transparent;
+    border: 2px solid #86efac;
+    color: #86efac;
 }
 
 /* MOVIMIENTOS */
