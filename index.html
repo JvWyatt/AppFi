@@ -3,301 +3,124 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <title>Finanzas</title>
-
-    <link rel="stylesheet"
-        href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="description" content="AppFi - Finanzas Minimalistas">
+    
+    <title>AppFi - Finanzas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Menú lateral -->
+    <!-- Overlay -->
+    <div id="overlay" class="overlay hidden"></div>
 
-    <div id="overlay"
-        class="overlay hidden">
-    </div>
-
-    <aside id="sidebar"
-        class="sidebar">
-
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
         <div class="sidebar-header">
-
             <h2>Cuentas</h2>
-
-            <button id="cerrarMenu">
-                ✕
-            </button>
-
+            <button id="cerrarMenu">✕</button>
         </div>
 
-        <div id="listaCuentas">
-        </div>
+        <div id="listaCuentas"></div>
 
-        <button id="nuevaCuentaBtn"
-            class="menu-btn">
-
-            + Nueva cuenta
-
-        </button>
-
-        <button id="renombrarCuentaBtn"
-            class="menu-btn">
-
-            ✏ Renombrar
-
-        </button>
-
-        <button id="eliminarCuentaBtn"
-            class="menu-btn danger">
-
-            🗑 Eliminar
-
-        </button>
-
+        <button id="nuevaCuentaBtn" class="menu-btn">+ Nueva cuenta</button>
+        <button id="renombrarCuentaBtn" class="menu-btn">✏ Renombrar</button>
+        <button id="eliminarCuentaBtn" class="menu-btn danger">🗑 Eliminar</button>
     </aside>
 
     <!-- Header -->
-
     <header>
-
-        <button id="abrirMenu">
-
-            ☰
-
-        </button>
-
-        <h1>
-
-            Finanzas
-
-        </h1>
-
+        <button id="abrirMenu">☰</button>
+        <h1>AppFi</h1>
     </header>
 
     <!-- Cuenta actual -->
-
     <section class="cuenta-selector">
-
-        <span id="cuentaActual">
-
-            Sin cuenta
-
-        </span>
-
+        <span id="cuentaActual">Sin cuenta</span>
     </section>
 
     <!-- Resumen -->
-
     <section class="resumen">
-
         <div class="card-resumen">
-
-            <span>
-
-                Balance actual
-
-            </span>
-
-            <strong id="balanceActual">
-
-                $0.00
-
-            </strong>
-
+            <span>Balance actual</span>
+            <strong id="balanceActual">$0.00</strong>
         </div>
 
         <div class="card-resumen">
-
-            <span>
-
-                Pendiente por reponer
-
-            </span>
-
-            <strong id="pendienteReponer">
-
-                $0.00
-
-            </strong>
-
+            <span>Pendiente</span>
+            <strong id="pendienteReponer">$0.00</strong>
         </div>
 
         <div class="card-resumen">
-
-            <span>
-
-                Balance objetivo
-
-            </span>
-
-            <strong id="balanceObjetivo">
-
-                $0.00
-
-            </strong>
-
+            <span>Objetivo</span>
+            <strong id="balanceObjetivo">$0.00</strong>
         </div>
-
     </section>
 
     <!-- Acciones rápidas -->
-
     <section class="acciones">
-
-        <button
-            class="accion ingreso"
-            data-tipo="Ingreso">
-
+        <button class="accion ingreso" data-tipo="Ingreso">
             ➕
-
-            <span>
-
-                Ingreso
-
-            </span>
-
+            <span>Ingreso</span>
         </button>
 
-        <button
-            class="accion gasto"
-            data-tipo="Gasto">
-
+        <button class="accion gasto" data-tipo="Gasto">
             ➖
-
-            <span>
-
-                Gasto
-
-            </span>
-
+            <span>Gasto</span>
         </button>
 
-        <button
-            class="accion retiro"
-            data-tipo="Retiro Temporal">
-
+        <button class="accion retiro" data-tipo="Retiro Temporal">
             ↺
-
-            <span>
-
-                Retiro
-
-            </span>
-
+            <span>Retiro</span>
         </button>
 
-        <button
-            class="accion reposicion"
-            data-tipo="Reposición del Retiro">
-
+        <button class="accion reposicion" data-tipo="Reposición del Retiro">
             ↻
-
-            <span>
-
-                Reponer
-
-            </span>
-
+            <span>Reponer</span>
         </button>
-
     </section>
 
     <!-- Movimientos -->
-
     <section class="movimientos">
-
-        <h2>
-
-            Movimientos
-
-        </h2>
-
-        <div id="listaMovimientos">
-
-        </div>
-
+        <h2>Movimientos</h2>
+        <div id="listaMovimientos"></div>
     </section>
 
     <!-- Modal movimiento -->
-
-    <div id="modalMovimiento"
-        class="modal hidden">
-
+    <div id="modalMovimiento" class="modal hidden">
         <div class="modal-content">
+            <h2 id="tituloModal">Movimiento</h2>
 
-            <h2 id="tituloModal">
-
-                Movimiento
-
-            </h2>
-
-            <input
-                type="number"
-                id="montoMovimiento"
-                placeholder="Monto">
-
-            <input
-                type="text"
-                id="descripcionMovimiento"
-                placeholder="Descripción">
-
-            <input
-                type="date"
-                id="fechaMovimiento">
+            <input type="number" id="montoMovimiento" placeholder="Monto" inputmode="decimal">
+            <input type="text" id="descripcionMovimiento" placeholder="Descripción (opcional)">
+            <input type="date" id="fechaMovimiento">
 
             <div class="modal-buttons">
-
-                <button id="cancelarMovimiento">
-
-                    Cancelar
-
-                </button>
-
-                <button id="guardarMovimiento">
-
-                    Guardar
-
-                </button>
-
+                <button id="cancelarMovimiento">Cancelar</button>
+                <button id="guardarMovimiento">Guardar</button>
             </div>
-
         </div>
-
     </div>
 
     <!-- Modal cuenta -->
-
-    <div id="modalCuenta"
-        class="modal hidden">
-
+    <div id="modalCuenta" class="modal hidden">
         <div class="modal-content">
-
-            <h2>
-
-                Nueva cuenta
-
-            </h2>
-
-            <input
-                type="text"
-                id="nombreCuenta"
-                placeholder="Nombre">
+            <h2>Nueva cuenta</h2>
+            <input type="text" id="nombreCuenta" placeholder="Nombre de la cuenta">
 
             <div class="modal-buttons">
+                <button id="cancelarCuenta">Cancelar</button>
+                <button id="guardarCuenta">Crear</button>
+            </div>
+        </div>
+    </div>
 
-                <button id="cancelarCuenta">
+    <script src="script.js"></script>
+</body>
 
-                    Cancelar
-
-                </button>
-
-                <button id="guardarCuenta">
-
-                    Crear
+</html>
 
                 </button>
 
