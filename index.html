@@ -9,6 +9,7 @@
     
     <title>AppFi - Finanzas</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
@@ -103,6 +104,13 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(() => console.log('Service Worker registrado'))
+                .catch(err => console.warn('Service Worker falló', err));
+        }
+    </script>
 </body>
 
 </html>
