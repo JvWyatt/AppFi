@@ -2,8 +2,8 @@
     --primary: #2563eb;
     --income: #16a34a;
     --expense: #dc2626;
-    --temporary: #0284c7;
-    --replace: #9333ea;
+    --temporary: #f87171;
+    --replace: #86efac;
 
     --background: #f8fafc;
     --surface: #ffffff;
@@ -138,22 +138,22 @@ header h1 {
 .accion {
     border: none;
     border-radius: var(--radius);
-    padding: 16px 8px;
+    padding: 16px 12px;
     color: white;
     cursor: pointer;
     box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
-    font-size: 1.2rem;
+    justify-content: center;
+    gap: 0;
+    font-size: 1rem;
     font-weight: 600;
     transition: all 0.2s;
 }
 
 .accion span {
-    font-size: 0.85rem;
-    font-weight: 500;
+    display: none;
 }
 
 .accion:active {
@@ -162,19 +162,19 @@ header h1 {
 }
 
 .ingreso {
-    background: linear-gradient(135deg, var(--income) 0%, #15803d 100%);
+    background: linear-gradient(135deg, #86efac 0%, #4ade80 100%);
 }
 
 .gasto {
-    background: linear-gradient(135deg, var(--expense) 0%, #b91c1c 100%);
+    background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%);
 }
 
 .retiro {
-    background: linear-gradient(135deg, var(--temporary) 0%, #0369a1 100%);
+    background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%);
 }
 
 .reposicion {
-    background: linear-gradient(135deg, var(--replace) 0%, #7e22ce 100%);
+    background: linear-gradient(135deg, #86efac 0%, #4ade80 100%);
 }
 
 /* MOVIMIENTOS */
